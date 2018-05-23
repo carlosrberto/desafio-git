@@ -48,7 +48,7 @@
         const error = document.querySelector('#error');
 
         function getCep(cep) {
-            return fetch(`/url-do-serviceo/?variavel_cep=${cep}`)
+            return fetch(`/consulta-cep/?cep=${cep}`)
             .then(function(response) {
                 return response.json();
             });
