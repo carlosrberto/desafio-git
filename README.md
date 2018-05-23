@@ -31,12 +31,17 @@ git clone git@github.com:carlosrberto/desafio-git.git
 ## Integrar com o Front-End
 
 1 - Mergear a branch `front-end` em `integration`
+
 2 - Criar uma rota em `/` para renderizar o html do front-end (`render_template('index.html')`)
+
 3 - Editar o `index.htm` para acessar a **URL** correta do serviço
+
 4 - Comitar as alterações
 
 ## Mergear `integration` em `master`
 
 1 - De `push` nas alterações em `integration`
+
 2 - Volte para branch `master`
+
 3 - Mergear `integration` em `master`
