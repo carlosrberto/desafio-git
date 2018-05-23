@@ -45,3 +45,5 @@ git clone git@github.com:carlosrberto/desafio-git.git
 2 - Volte para branch `master`
 
 3 - Mergear `integration` em `master`
+
+4 - De push nas alterações
