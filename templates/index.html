@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consulta de CEP</title>
+    <style>
+        #form{
+            border: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        input[type="text"]{
+            border: 1px solid #ddd;
+            font-size: 16px;
+            color: #000;
+            line-height: 30px;
+            height: 30px;
+        }
+
+        button{
+            line-height: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="form">
+        <input type="text" placeholder="Digite o CEP">
+        <button type="button">Pesquisar</button>
+        <div id="error"></div>
+        <ul id="response">
+            
+        </div>
+    </div>
+    <script>
+        const btn = document.querySelector('button');
+        const input = document.querySelector('input[type="text"]');
+        const response = document.querySelector('#response');
+        const error = document.querySelector('#error');
+
+        function getCep(cep) {
+            return fetch(`/url-do-serviceo/?variavel_cep=${cep}`)
+            .then(function(response) {
+                return response.json();
+            });
+        }
+
+        function renderReponse(json) {
+            if(json.error) {
+                response.innerHTML = '';
+                error.innerHTML = json.error;
+            } else {
+                const html = Object.keys(json).map(key => {
+                    return `<li><strong>${key}</strong>: ${json[key]}</li>`;
+                });
+                error.innerHTML = '';
+                response.innerHTML = html.join('');
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            const cep = input.value;
+            getCep(cep).then(renderReponse);
+        });
+    </script>    
+</body>
+</html>
